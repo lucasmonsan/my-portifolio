@@ -1,7 +1,7 @@
 export const HomePage = () => {
   return (
-    <main id='Page'>
-      
+    <main id='Page'> 
+      HomePage
     </main>
   )
 }

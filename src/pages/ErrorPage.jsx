@@ -2,9 +2,9 @@ import { styled } from 'styled-components'
 
 export const ErrorPage = () => {
   return (
-    <>
+    <main id="Page">
       <Title>ErrorPage</Title>
-    </>
+    </main>
   )
 }
 

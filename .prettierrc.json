@@ -1,15 +1,15 @@
 {
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "tabWidth": 2,
-    "semi": false,
-    "jsxSingleQuote": true,
-    "overrides": [
-        {
-          "files": "*.json",
-          "options": {
-            "parser": "json",
-            "tabWidth": 2
-          }
-        }]
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "printWidth": 150,
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "semi": false,
+  "overrides": [{
+    "files": "*.json",
+    "options": {
+      "parser": "json",
+      "tabWidth": 2
+    }
+  }]
 }
