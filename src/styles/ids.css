@@ -1,0 +1,14 @@
+#Page {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1280px;
+  min-height: 100dvh;
+}
+#LinkFix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

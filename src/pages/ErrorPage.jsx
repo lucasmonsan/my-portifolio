@@ -2,12 +2,8 @@ import { styled } from 'styled-components'
 
 export const ErrorPage = () => {
   return (
-    <main id="Page">
-      <Title>ErrorPage</Title>
+    <main id='Page'>
+      <h1>ErrorPage</h1>
     </main>
   )
 }
-
-export const Title = styled.h1`
-  color: red;
-`

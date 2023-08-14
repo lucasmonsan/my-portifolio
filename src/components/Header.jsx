@@ -14,11 +14,11 @@ export const Header = () => {
 
       <Nav>
         <A href=''>
-          <Player autoplay={false} loop={true} hover={true} speed={1.5} src={github} style={{ height: '2.75rem' }} />
+          <Player src={github} autoplay={false} loop={true} hover={true} speed={1.5} style={{ height: '2.75rem' }} />
         </A>
 
         <A href=''>
-          <Player autoplay={false} loop={true} hover={true} speed={1.5} src={linkedin} style={{ transform: 'scale(2)', paddingTop: '0.25rem' }} />
+          <Player src={linkedin} autoplay={false} loop={true} hover={true} speed={1.5} style={{ transform: 'scale(2)', paddingTop: '0.25rem' }} />
         </A>
       </Nav>
     </Box_Header>
