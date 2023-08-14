@@ -22,17 +22,17 @@ export const HomePage = () => {
       setTimeout(() => (Strong.style.borderRight = 'none'), 2500)
 
       if (window.innerWidth > 720) {
-        setTimeout(() => (StrongStroke.style.width = '11ch'), 2500)
-        setTimeout(() => (StrongFill01.style.width = '11ch'), 3000)
-        setTimeout(() => (StrongFill02.style.width = '11ch'), 3500)
+        setTimeout(() => (StrongStroke.style.width = '11.25ch'), 2500)
+        setTimeout(() => (StrongFill01.style.width = '11.25ch'), 3000)
+        setTimeout(() => (StrongFill02.style.width = '11.25ch'), 3500)
       } else {
-        setTimeout(() => (StrongStroke.style.width = '6.5ch'), 2500)
-        setTimeout(() => (StrongFill01.style.width = '6.5ch'), 3000)
-        setTimeout(() => (StrongFill02.style.width = '6.5ch'), 3500)
+        setTimeout(() => (StrongStroke.style.width = '6.45ch'), 2500)
+        setTimeout(() => (StrongFill01.style.width = '6.45ch'), 3000)
+        setTimeout(() => (StrongFill02.style.width = '6.45ch'), 3500)
       }
 
-      // setTimeout(() => (StrongStroke.style.opacity = '0'), 4000)
-      // setTimeout(() => (StrongFill01.style.opacity = '0'), 4000)
+      setTimeout(() => (StrongStroke.style.opacity = '0'), 4000)
+      setTimeout(() => (StrongFill01.style.opacity = '0'), 4000)
       setTimeout(() => (P1.style.borderRight = 'solid 4px'), 4000)
       setTimeout(() => (P1.style.width = '19ch'), 4500)
       setTimeout(() => (P1.style.borderRight = 'none'), 5000)
@@ -54,9 +54,9 @@ export const HomePage = () => {
         </Div>
 
         <BoxName>
-          <StrongStroke id='StrongStroke'>Lucas Monsan</StrongStroke>
-          <StrongFill01 id='StrongFill01'>Lucas Monsan</StrongFill01>
-          <StrongFill02 id='StrongFill02'>Lucas Monsan</StrongFill02>
+          <StrongStroke id='StrongStroke'>Lucas Monsan,</StrongStroke>
+          <StrongFill01 id='StrongFill01'>Lucas Monsan,</StrongFill01>
+          <StrongFill02 id='StrongFill02'>Lucas Monsan,</StrongFill02>
         </BoxName>
 
         <Div>
@@ -118,6 +118,9 @@ const Strong = styled.strong`
   font-size: 3em;
   font-weight: 600;
   animation: blinking 0.5s infinite step-end alternate;
+  @media (max-width: 720px) {
+    font-size: 2.5em;
+  }
 `
 const BoxName = styled.div`
   user-select: none;
@@ -160,18 +163,18 @@ const StrongFill01 = styled.strong`
   left: 0;
   width: 0;
   height: 100%;
+  padding: 0.5rem 0;
   line-height: 4rem;
   font-size: 6em;
   color: ${(props) => props.theme.bgPageColor};
-  transform: translateY(7%);
+  transform: translateY(7.25%);
   -webkit-text-stroke: 0.1rem ${(props) => props.theme.primaryColor};
   @media (max-width: 720px) {
     white-space: normal;
-    padding: 0;
+    padding: 0 0 0 0.15rem;
     text-align: center;
     line-height: 5rem;
-    word-spacing: 0.2rem;
-    transform: translateY(4.5%);
+    transform: translateY(4.3%);
   }
 `
 const StrongFill02 = styled.strong`
@@ -187,15 +190,14 @@ const StrongFill02 = styled.strong`
   line-height: 4rem;
   font-size: 6em;
   color: ${(props) => props.theme.primaryColor};
-  transform: translateY(7%);
+  transform: translateY(7.25%);
   -webkit-text-stroke: 0.1rem ${(props) => props.theme.primaryColor};
   @media (max-width: 720px) {
     white-space: normal;
-    padding: 0;
+    padding: 0 0 0 0.15rem;
     text-align: center;
     line-height: 5rem;
-    word-spacing: 0.2rem;
-    transform: translateY(4.5%);
+    transform: translateY(4.3%);
   }
 `
 const P = styled.p`
@@ -205,4 +207,7 @@ const P = styled.p`
   width: 0;
   font-size: 2rem;
   animation: blinking 0.5s infinite step-end alternate;
+  @media (max-width: 720px) {
+    font-size: 1.5em;
+  }
 `
