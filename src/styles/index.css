@@ -6,16 +6,14 @@
   font-family: 'Rajdhani', sans-serif;
   text-decoration: inherit;
   color: inherit;
-  transition: all 0.5s ease-in-out;
-}
-#root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 a {
   cursor: pointer;
 }
 .test {
   background-color: pink;
+}
+strong,
+p {
+  transition: all 0.5s ease-in-out;
 }

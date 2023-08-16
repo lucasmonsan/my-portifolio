@@ -6,6 +6,7 @@ export const HomePage = () => {
   const [effects, setEffects] = useState(0)
 
   useEffect(() => {
+    const Img = document.getElementById('Img')
     const Strong = document.getElementById('Strong')
     const StrongStroke = document.getElementById('StrongStroke')
     const StrongFill01 = document.getElementById('StrongFill01')
@@ -43,12 +44,14 @@ export const HomePage = () => {
       setTimeout(() => (P3.style.width = '25.5ch'), 6500)
       setTimeout(() => (P3.style.borderRight = 'none'), 7000)
       setTimeout(() => (P4.style.borderRight = 'solid 4px'), 7000)
-      setTimeout(() => (P4.style.width = '16ch'), 7500)
+      setTimeout(() => (P4.style.width = '28.5ch'), 7500)
+      setTimeout(() => (Img.style.filter = 'grayscale(100%) blur(0)'), 8000)
     }
   })
+
   return (
     <main id='Page'>
-      <LeftBox>
+      <LeftBox id='LeftBox'>
         <Div>
           <Strong id='Strong'>Olá! Meu nome é</Strong>
         </Div>
@@ -72,36 +75,45 @@ export const HomePage = () => {
         </Div>
 
         <Div>
-          <P id='P4'>performance e SEO!</P>
+          <P id='P4'>responsividade, performance e SEO!</P>
         </Div>
       </LeftBox>
 
       <RightBox>
-        <Img src={homepage01} alt='' />
+        <Img src={homepage01} alt='' id='Img' />
       </RightBox>
     </main>
   )
 }
 const LeftBox = styled.div`
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   min-height: 100dvh;
+  padding-top: 2rem;
   @media (max-width: 720px) {
     justify-content: center;
-    width: 100%;
+    padding-top: 8rem;
   }
 `
 const RightBox = styled.div`
+  z-index: 1;
+  position: fixed;
+  top: 5rem;
+  right: 6rem;
   display: flex;
-  align-items: flex-end;
-  width: 0%;
-  min-height: 100dvh;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100dvh;
 `
 const Img = styled.img`
-  width: 100%;
+  height: 140%;
+  filter: grayscale(100%) blur(400px);
+  transition: filter 1s ease-in-out;
 `
 const Div = styled.div`
   display: flex;
@@ -143,7 +155,7 @@ const StrongStroke = styled.strong`
   padding: 0.5rem 0;
   line-height: 4rem;
   font-size: 6em;
-  color: ${(props) => props.theme.bgPageColor};
+  color: transparent;
   -webkit-text-stroke: 0.15rem ${(props) => props.theme.bgComponentColor};
   animation: blinking 0.5s infinite step-end alternate;
   @media (max-width: 720px) {
@@ -166,8 +178,8 @@ const StrongFill01 = styled.strong`
   padding: 0.5rem 0;
   line-height: 4rem;
   font-size: 6em;
-  color: ${(props) => props.theme.bgPageColor};
-  transform: translateY(7.25%);
+  color: transparent;
+  transform: translateY(0.5rem);
   -webkit-text-stroke: 0.1rem ${(props) => props.theme.primaryColor};
   @media (max-width: 720px) {
     white-space: normal;
@@ -190,7 +202,7 @@ const StrongFill02 = styled.strong`
   line-height: 4rem;
   font-size: 6em;
   color: ${(props) => props.theme.primaryColor};
-  transform: translateY(7.25%);
+  transform: translateY(0.5rem);
   -webkit-text-stroke: 0.1rem ${(props) => props.theme.primaryColor};
   @media (max-width: 720px) {
     white-space: normal;

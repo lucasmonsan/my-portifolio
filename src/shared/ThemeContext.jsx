@@ -1,29 +1,25 @@
 import { createContext, useState } from 'react'
 
-export const lightTheme = {
-  bgPageColor: '#343239',
+export const darkTheme = {
+  bgPageColor: '#2d2c2e',
   bgComponentColor: '#666564b0',
-  primaryColor: '#f03d33',
-  secondaryColor: '#f2f9fb',
+  primaryColor: '#fd1f4a',
+  secondaryColor: '#faf5e6',
   tertiaryColor: '#e3e1e3',
 }
 
-export const darkTheme = {
-  bgPageColor: '#fbf9fb',
+export const lightTheme = {
+  bgPageColor: '#faf5e6',
   bgComponentColor: '#e3e1e3b0',
-  primaryColor: '#f03d33',
-  secondaryColor: '#343239',
+  primaryColor: '#fd1f4a',
+  secondaryColor: '#2d2c2e',
   tertiaryColor: '#666564',
 }
 
 export const SwitchThemeContext = createContext({})
 
 export const SwitchThemeProvider = ({ children }) => {
-  const [currentTheme, setCurrentTheme] = useState('light')
+  const [currentTheme, setCurrentTheme] = useState('dark')
 
-  return (
-    <SwitchThemeContext.Provider value={{ currentTheme, setCurrentTheme }}>
-      {children}
-    </SwitchThemeContext.Provider>
-  )
+  return <SwitchThemeContext.Provider value={{ currentTheme, setCurrentTheme }}>{children}</SwitchThemeContext.Provider>
 }
