@@ -1,9 +1,10 @@
 import { styled } from 'styled-components'
 import homepage01 from '../assets/images/homepage01.webp'
 import { useEffect, useState } from 'react'
+import { animateBorder, animateWidth } from '../js/Animations'
 
 export const HomePage = () => {
-  const [effects, setEffects] = useState(0)
+  const [effects, setEffects] = useState(true)
 
   useEffect(() => {
     const Img = document.getElementById('Img')
@@ -16,36 +17,37 @@ export const HomePage = () => {
     const P3 = document.getElementById('P3')
     const P4 = document.getElementById('P4')
 
-    if (effects === 0) {
-      setTimeout(() => (Strong.style.borderRight = 'solid 4px'), 100)
-      setTimeout(() => (Strong.style.width = '3.25ch'), 1000)
-      setTimeout(() => (Strong.style.width = '13.25ch'), 2000)
-      setTimeout(() => (Strong.style.borderRight = 'none'), 2500)
+    if (effects) {
+      const finalState = window.innerWidth > 720 ? '11.25ch' : '6.45ch'
 
-      if (window.innerWidth > 720) {
-        setTimeout(() => (StrongStroke.style.width = '11.25ch'), 2500)
-        setTimeout(() => (StrongFill01.style.width = '11.25ch'), 3000)
-        setTimeout(() => (StrongFill02.style.width = '11.25ch'), 3500)
-      } else {
-        setTimeout(() => (StrongStroke.style.width = '6.45ch'), 2500)
-        setTimeout(() => (StrongFill01.style.width = '6.45ch'), 3000)
-        setTimeout(() => (StrongFill02.style.width = '6.45ch'), 3500)
-      }
-
-      setTimeout(() => (StrongStroke.style.opacity = '0'), 4000)
-      setTimeout(() => (StrongFill01.style.opacity = '0'), 4000)
-      setTimeout(() => (P1.style.borderRight = 'solid 4px'), 4000)
-      setTimeout(() => (P1.style.width = '19ch'), 4500)
-      setTimeout(() => (P1.style.borderRight = 'none'), 5000)
-      setTimeout(() => (P2.style.borderRight = 'solid 4px'), 5000)
-      setTimeout(() => (P2.style.width = '9.5ch'), 5500)
-      setTimeout(() => (P2.style.borderRight = 'none'), 6000)
-      setTimeout(() => (P3.style.borderRight = 'solid 4px'), 6000)
-      setTimeout(() => (P3.style.width = '25.5ch'), 6500)
-      setTimeout(() => (P3.style.borderRight = 'none'), 7000)
-      setTimeout(() => (P4.style.borderRight = 'solid 4px'), 7000)
-      setTimeout(() => (P4.style.width = '28.5ch'), 7500)
-      setTimeout(() => (Img.style.filter = 'grayscale(100%) blur(0)'), 8000)
+      animateBorder(Strong, 0, 4, 0, 0, () => {
+        animateWidth(Strong, '3.25ch', () => {
+          animateWidth(Strong, '13.25ch', () => {
+            Strong.style.borderRight = 'none'
+            animateWidth(StrongStroke, finalState, () => {
+              animateWidth(StrongFill01, finalState, () => {
+                animateWidth(StrongFill02, finalState, () => {
+                  StrongStroke.style.opacity = '0'
+                  StrongFill01.style.opacity = '0'
+                  setTimeout(() => (P1.style.borderRight = 'solid 4px'), 0)
+                  setTimeout(() => (P1.style.width = '19ch'), 500)
+                  setTimeout(() => (P1.style.borderRight = 'none'), 1000)
+                  setTimeout(() => (P2.style.borderRight = 'solid 4px'), 1000)
+                  setTimeout(() => (P2.style.width = '9.5ch'), 1500)
+                  setTimeout(() => (P2.style.borderRight = 'none'), 2000)
+                  setTimeout(() => (P3.style.borderRight = 'solid 4px'), 2000)
+                  setTimeout(() => (P3.style.width = '25.5ch'), 2500)
+                  setTimeout(() => (P3.style.borderRight = 'none'), 3000)
+                  setTimeout(() => (P4.style.borderRight = 'solid 4px'), 3000)
+                  setTimeout(() => (P4.style.width = '28.5ch'), 3500)
+                  setTimeout(() => (Img.style.filter = 'grayscale(100%) blur(0)'), 4000)
+                })
+              })
+            })
+          })
+        })
+      })
+    } else {
     }
   })
 
@@ -98,6 +100,10 @@ const LeftBox = styled.div`
     justify-content: center;
     padding-top: 8rem;
   }
+  @media (max-width: 420px) {
+    justify-content: center;
+    padding-top: 6rem;
+  }
 `
 const RightBox = styled.div`
   z-index: 1;
@@ -109,6 +115,9 @@ const RightBox = styled.div`
   justify-content: center;
   width: 100%;
   height: 100dvh;
+  @media (max-width: 720px) {
+    right: 5rem;
+  }
 `
 const Img = styled.img`
   height: 140%;
@@ -129,7 +138,7 @@ const Strong = styled.strong`
   margin-right: 0.5rem;
   font-size: 3em;
   font-weight: 600;
-  animation: blinking 0.5s infinite step-end alternate;
+  animation: blinking 0.35s infinite step-end alternate;
   @media (max-width: 720px) {
     font-size: 2.5em;
   }

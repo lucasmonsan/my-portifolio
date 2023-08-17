@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 import { Player } from '@lottiefiles/react-lottie-player'
-import github from '../assets/animations/github.json'
-import linkedin from '../assets/animations/linkedin.json'
+import github from '../assets/json/github.json'
+import linkedin from '../assets/json/linkedin.json'
 
 /******************************/
 
@@ -18,7 +18,14 @@ export const Header = () => {
         </A>
 
         <A href=''>
-          <Player src={linkedin} autoplay={false} loop={true} hover={true} speed={1.5} style={{ transform: 'scale(2)', paddingTop: '0.25rem' }} />
+          <Player
+            src={linkedin}
+            autoplay={false}
+            loop={true}
+            hover={true}
+            speed={1.5}
+            style={{ transform: 'scale(2)', paddingTop: '0.25rem' }}
+          />
         </A>
       </Nav>
     </Box_Header>
