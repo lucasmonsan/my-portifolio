@@ -22,6 +22,7 @@ export const HomePage = () => {
     if (start) {
       const finalState = window.innerWidth > 720 ? '11.25ch' : '6.45ch'
 
+      Img.style.opacity = '0.85'
       animateBorder(Strong, 0, 4, 0, 0, () => {
         animateWidth(Strong, '3.25ch', () => {
           animateWidth(Strong, '13.25ch', () => {
@@ -101,10 +102,9 @@ export const HomePage = () => {
         <Div>
           <A
             target='_blank'
-            id='CV'
             href='https://firebasestorage.googleapis.com/v0/b/monsan-dev.appspot.com/o/Portifolio%2FLucasMonteiroSantos_Curriculo.pdf?alt=media&token=42d2c8cd-fe69-45f4-b510-cc61084bc918'
           >
-            Meu CV
+            <Button id='CV'>Meu CV</Button>
           </A>
           <Link to='/contact' className='hoverGrow'>
             <Button id='Contact'>Bora bater um papo?</Button>
@@ -157,8 +157,8 @@ const RightBox = styled.div`
 const Img = styled.img`
   height: 140%;
   filter: grayscale(100%) blur(400px);
-  transition: filter 0.75s ease-in-out;
-  opacity: 0.85;
+  transition: all 0.75s ease-in-out;
+  opacity: 0;
 `
 const Div = styled.div`
   display: flex;
@@ -250,7 +250,7 @@ const StrongFill02 = styled.strong`
   font-size: 6em;
   color: ${(props) => props.theme.primaryColor};
   transform: translateY(0.5rem);
-  -webkit-text-stroke: 0.1rem ${(props) => props.theme.primaryColor};
+  -webkit-text-stroke: 0.12rem ${(props) => props.theme.primaryColor};
   @media (max-width: 720px) {
     white-space: normal;
     padding: 0 0 0 0.15rem;
@@ -275,22 +275,6 @@ const A = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 6.5rem;
-  height: 3rem;
-  margin-top: 1rem;
-  font-size: 1.5em;
-  font-weight: 500;
-  color: ${(props) => props.theme.primaryColor};
-  border: solid 3px ${(props) => props.theme.primaryColor};
-  border-radius: 0.5rem;
-  background-color: transparent;
-  transition: all 0.25s ease-in-out;
-  transform: scale(0);
-  &#Contact {
-    width: 14.5rem;
-    color: ${(props) => props.theme.lightColor};
-    background-color: ${(props) => props.theme.primaryColor};
-  }
 `
 const Button = styled.button`
   display: flex;
@@ -300,7 +284,7 @@ const Button = styled.button`
   height: 3rem;
   margin-top: 1rem;
   font-size: 1.5em;
-  font-weight: 500;
+  font-weight: 700;
   color: ${(props) => props.theme.primaryColor};
   border: solid 3px ${(props) => props.theme.primaryColor};
   border-radius: 0.5rem;
@@ -311,5 +295,6 @@ const Button = styled.button`
     width: 14.5rem;
     color: ${(props) => props.theme.lightColor};
     background-color: ${(props) => props.theme.primaryColor};
+    text-shadow: 0 0 8px #00000085;
   }
 `

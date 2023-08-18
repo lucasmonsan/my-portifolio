@@ -59,7 +59,7 @@ const Box_Header = styled.header`
   padding: 0 1rem;
 `
 const H1 = styled.h1`
-  margin-left: 2.25rem;
+  margin-left: 2.5rem;
   font-size: 2em;
 `
 const Nav = styled.nav`
