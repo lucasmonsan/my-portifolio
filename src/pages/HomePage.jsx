@@ -1,10 +1,10 @@
 import { styled } from 'styled-components'
-import homepage01 from '../assets/images/homepage01.webp'
 import { useEffect, useState } from 'react'
-import { animateBorder, animateWidth } from '../js/Animations'
+import { animateBorder, animateFilter, animateTransform, animateWidth } from '../js/Animations'
+import { Link } from 'react-router-dom'
 
 export const HomePage = () => {
-  const [effects, setEffects] = useState(true)
+  const [start, setStart] = useState(true)
 
   useEffect(() => {
     const Img = document.getElementById('Img')
@@ -16,38 +16,56 @@ export const HomePage = () => {
     const P2 = document.getElementById('P2')
     const P3 = document.getElementById('P3')
     const P4 = document.getElementById('P4')
+    const CV = document.getElementById('CV')
+    const Contact = document.getElementById('Contact')
 
-    if (effects) {
+    if (start) {
       const finalState = window.innerWidth > 720 ? '11.25ch' : '6.45ch'
 
       animateBorder(Strong, 0, 4, 0, 0, () => {
         animateWidth(Strong, '3.25ch', () => {
           animateWidth(Strong, '13.25ch', () => {
             Strong.style.borderRight = 'none'
+            setStart(false)
             animateWidth(StrongStroke, finalState, () => {
               animateWidth(StrongFill01, finalState, () => {
                 animateWidth(StrongFill02, finalState, () => {
                   StrongStroke.style.opacity = '0'
                   StrongFill01.style.opacity = '0'
-                  setTimeout(() => (P1.style.borderRight = 'solid 4px'), 0)
-                  setTimeout(() => (P1.style.width = '19ch'), 500)
-                  setTimeout(() => (P1.style.borderRight = 'none'), 1000)
-                  setTimeout(() => (P2.style.borderRight = 'solid 4px'), 1000)
-                  setTimeout(() => (P2.style.width = '9.5ch'), 1500)
-                  setTimeout(() => (P2.style.borderRight = 'none'), 2000)
-                  setTimeout(() => (P3.style.borderRight = 'solid 4px'), 2000)
-                  setTimeout(() => (P3.style.width = '25.5ch'), 2500)
-                  setTimeout(() => (P3.style.borderRight = 'none'), 3000)
-                  setTimeout(() => (P4.style.borderRight = 'solid 4px'), 3000)
-                  setTimeout(() => (P4.style.width = '28.5ch'), 3500)
-                  setTimeout(() => (Img.style.filter = 'grayscale(100%) blur(0)'), 4000)
+                  P1.style.borderRight = 'solid 4px'
+                  animateWidth(P1, '19ch', () => {
+                    P1.style.borderRight = 'none'
+                    P2.style.borderRight = 'solid 4px'
+                    animateWidth(P2, '9.5ch', () => {
+                      P2.style.borderRight = 'none'
+                      P3.style.borderRight = 'solid 4px'
+                      animateWidth(P3, '25.5ch', () => {
+                        P3.style.borderRight = 'none'
+                        P4.style.borderRight = 'solid 4px'
+                        animateWidth(P4, '28.5ch', () => {
+                          P4.style.width = '28.5ch'
+                          animateTransform(CV, 'scale(1)', () => {
+                            animateTransform(Contact, 'scale(1)', () => {
+                              animateFilter(Img, 'grayscale(100%) blur(0px)', () => {
+                                Strong.style.textShadow = '0 0 8px rgba(0, 0, 0, 0.75)'
+                                StrongFill02.style.textShadow = '0 0 8px rgba(0, 0, 0, 0.75)'
+                                P1.style.textShadow = '0 0 8px rgba(0, 0, 0, 0.75)'
+                                P2.style.textShadow = '0 0 8px rgba(0, 0, 0, 0.75)'
+                                P3.style.textShadow = '0 0 8px rgba(0, 0, 0, 0.75)'
+                                P4.style.textShadow = '0 0 8px rgba(0, 0, 0, 0.75)'
+                              })
+                            })
+                          })
+                        })
+                      })
+                    })
+                  })
                 })
               })
             })
           })
         })
       })
-    } else {
     }
   })
 
@@ -79,10 +97,27 @@ export const HomePage = () => {
         <Div>
           <P id='P4'>responsividade, performance e SEO!</P>
         </Div>
+
+        <Div>
+          <A
+            target='_blank'
+            id='CV'
+            href='https://firebasestorage.googleapis.com/v0/b/monsan-dev.appspot.com/o/Portifolio%2FLucasMonteiroSantos_Curriculo.pdf?alt=media&token=42d2c8cd-fe69-45f4-b510-cc61084bc918'
+          >
+            Meu CV
+          </A>
+          <Link to='/contact' className='hoverGrow'>
+            <Button id='Contact'>Bora bater um papo?</Button>
+          </Link>
+        </Div>
       </LeftBox>
 
       <RightBox>
-        <Img src={homepage01} alt='' id='Img' />
+        <Img
+          src='https://firebasestorage.googleapis.com/v0/b/monsan-dev.appspot.com/o/Portifolio%2Fhomepage01.webp?alt=media&token=e258ef29-a42a-4ff5-854d-9ee39eb48c76'
+          alt=''
+          id='Img'
+        />
       </RightBox>
     </main>
   )
@@ -122,12 +157,14 @@ const RightBox = styled.div`
 const Img = styled.img`
   height: 140%;
   filter: grayscale(100%) blur(400px);
-  transition: filter 1s ease-in-out;
+  transition: filter 0.75s ease-in-out;
+  opacity: 0.85;
 `
 const Div = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
   width: 100%;
 `
 const Strong = styled.strong`
@@ -138,6 +175,7 @@ const Strong = styled.strong`
   margin-right: 0.5rem;
   font-size: 3em;
   font-weight: 600;
+  color: ${(props) => props.theme.lightColor};
   animation: blinking 0.35s infinite step-end alternate;
   @media (max-width: 720px) {
     font-size: 2.5em;
@@ -165,7 +203,7 @@ const StrongStroke = styled.strong`
   line-height: 4rem;
   font-size: 6em;
   color: transparent;
-  -webkit-text-stroke: 0.15rem ${(props) => props.theme.bgComponentColor};
+  -webkit-text-stroke: 0.1rem ${(props) => props.theme.bgComponentColor};
   animation: blinking 0.5s infinite step-end alternate;
   @media (max-width: 720px) {
     white-space: normal;
@@ -227,8 +265,51 @@ const P = styled.p`
   white-space: nowrap;
   width: 0;
   font-size: 2rem;
+  color: ${(props) => props.theme.lightColor};
   animation: blinking 0.5s infinite step-end alternate;
   @media (max-width: 720px) {
     font-size: 1.5em;
+  }
+`
+const A = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6.5rem;
+  height: 3rem;
+  margin-top: 1rem;
+  font-size: 1.5em;
+  font-weight: 500;
+  color: ${(props) => props.theme.primaryColor};
+  border: solid 3px ${(props) => props.theme.primaryColor};
+  border-radius: 0.5rem;
+  background-color: transparent;
+  transition: all 0.25s ease-in-out;
+  transform: scale(0);
+  &#Contact {
+    width: 14.5rem;
+    color: ${(props) => props.theme.lightColor};
+    background-color: ${(props) => props.theme.primaryColor};
+  }
+`
+const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6.5rem;
+  height: 3rem;
+  margin-top: 1rem;
+  font-size: 1.5em;
+  font-weight: 500;
+  color: ${(props) => props.theme.primaryColor};
+  border: solid 3px ${(props) => props.theme.primaryColor};
+  border-radius: 0.5rem;
+  background-color: transparent;
+  transition: all 0.25s ease-in-out;
+  transform: scale(0);
+  &#Contact {
+    width: 14.5rem;
+    color: ${(props) => props.theme.lightColor};
+    background-color: ${(props) => props.theme.primaryColor};
   }
 `

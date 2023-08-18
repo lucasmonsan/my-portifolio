@@ -1,19 +1,23 @@
 import { createContext, useState } from 'react'
 
 export const darkTheme = {
-  bgPageColor: '#2d2c2e',
-  bgComponentColor: '#666564b0',
-  primaryColor: '#fd1f4a',
-  secondaryColor: '#faf5e6',
-  tertiaryColor: '#e3e1e3',
+  bgPageColor: '#17181d',
+  bgComponentColor: '#292c35',
+  primaryColor: '#e09145',
+  secondaryColor: '#fcd9b8',
+
+  darkColor: '#17181d',
+  lightColor: '#fcd9b8',
 }
 
 export const lightTheme = {
-  bgPageColor: '#faf5e6',
-  bgComponentColor: '#e3e1e3b0',
-  primaryColor: '#fd1f4a',
-  secondaryColor: '#2d2c2e',
-  tertiaryColor: '#666564',
+  bgPageColor: '#fcd9b8',
+  bgComponentColor: '#ffecda',
+  primaryColor: '#e09145',
+  secondaryColor: '#17181d',
+
+  darkColor: '#17181d',
+  lightColor: '#fcd9b8',
 }
 
 export const SwitchThemeContext = createContext({})

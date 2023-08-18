@@ -7,13 +7,23 @@
   text-decoration: inherit;
   color: inherit;
 }
-a {
+
+a,
+button {
   cursor: pointer;
+  transition: all 0.25s ease-in-out;
 }
-.test {
-  background-color: pink;
-}
+
 strong,
 p {
   transition: all 0.5s ease-in-out;
+}
+
+svg:focus {
+  outline: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.test {
+  background-color: pink;
 }

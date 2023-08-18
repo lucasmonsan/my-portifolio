@@ -31,6 +31,7 @@ export const SVG_Home = () => {
   )
 }
 const BoxSVG = styled.svg`
+  user-select: none;
   width: fit-content;
   height: 2rem;
   &#Fill {

@@ -66,10 +66,10 @@ const Img = styled.img`
   }
 `
 const BlurBG = styled.div`
-  z-index: 0;
+  z-index: 1;
   position: absolute;
   width: 100%;
   height: 100%;
   background-color: ${(props) => props.theme.bgComponentColor};
-  backdrop-filter: blur(0.85em);
+  backdrop-filter: blur(10px);
 `

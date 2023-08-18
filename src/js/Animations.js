@@ -27,3 +27,29 @@ export function animateWidth(element, finalState, callback) {
     })
   }, 100)
 }
+
+export function animateTransform(element, finalState, callback) {
+  element.style.transition = `transform 0.25s ease-in-out`
+
+  element.style.transform = finalState
+
+  element.addEventListener('transitionend', () => {
+    element.style.transition = ''
+    if (callback) {
+      callback()
+    }
+  })
+}
+
+export function animateFilter(element, finalState, callback) {
+  element.style.transition = `filter 0.75s ease-in-out`
+
+  element.style.filter = finalState
+
+  element.addEventListener('transitionend', () => {
+    element.style.transition = ''
+    if (callback) {
+      callback()
+    }
+  })
+}

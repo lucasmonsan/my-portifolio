@@ -1,1 +1,5 @@
-
+.hoverGrow:hover {
+  transform: scale(1.1);
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}

@@ -21,4 +21,5 @@ const ThemeProps = styled.main`
   width: 100%;
   color: ${(props) => props.theme.secondaryColor};
   background-color: ${(props) => props.theme.bgPageColor};
+  transition: all 0.25s ease-in-out;
 `

@@ -2,29 +2,42 @@ import { styled } from 'styled-components'
 import { Player } from '@lottiefiles/react-lottie-player'
 import github from '../assets/json/github.json'
 import linkedin from '../assets/json/linkedin.json'
+import { SVG_Moon } from './icons/SVG_Moon'
+import { SVG_Sun } from './icons/SVG_Sun'
+import { useContext, useEffect } from 'react'
+import { SwitchThemeContext } from '../shared/ThemeContext'
 
 /******************************/
 
 export const Header = () => {
+  const { currentTheme, setCurrentTheme } = useContext(SwitchThemeContext)
+
+  useEffect(() => {
+    if (localStorage.getItem('currentTheme')) {
+      setCurrentTheme(localStorage.getItem('currentTheme'))
+    }
+  }, [])
+
   return (
     <Box_Header>
       <Nav>
+        {currentTheme === 'light' ? <SVG_Sun /> : <SVG_Moon />}
         <H1>MonSan</H1>
       </Nav>
 
       <Nav>
-        <A href=''>
-          <Player src={github} autoplay={false} loop={true} hover={true} speed={1.5} style={{ height: '2.75rem' }} />
+        <A target='_blank' href='https://github.com/lucasmonsan'>
+          <Player src={github} hover={true} loop={true} autoplay={false} speed={1.5} style={{ height: '2rem' }} />
         </A>
 
-        <A href=''>
+        <A target='_blank' href='https://br.linkedin.com/in/lucasmonsan'>
           <Player
             src={linkedin}
-            autoplay={false}
-            loop={true}
             hover={true}
+            loop={true}
+            autoplay={false}
             speed={1.5}
-            style={{ transform: 'scale(2)', paddingTop: '0.25rem' }}
+            style={{ transform: 'scale(1.75)', paddingTop: '0.25rem' }}
           />
         </A>
       </Nav>
@@ -46,11 +59,15 @@ const Box_Header = styled.header`
   padding: 0 1rem;
 `
 const H1 = styled.h1`
+  margin-left: 2.25rem;
   font-size: 2em;
 `
 const Nav = styled.nav`
+  position: relative;
   display: flex;
-  gap: 0.5rem;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.25rem;
   width: fit-content;
 `
 const A = styled.a`
@@ -58,6 +75,6 @@ const A = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
+  width: 2rem;
   max-height: 3rem;
 `
