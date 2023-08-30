@@ -1,12 +1,14 @@
 import { styled } from 'styled-components'
-import { useEffect, useState } from 'react'
-import { animateBorder, animateFilter, animateTransform, animateWidth } from '../js/Animations'
+import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { transitionInHome, transitionOutHome } from '../js/Transitions'
+import { RouterPropsContext } from '../contexts/RouterPropsContext'
 
 export const HomePage = () => {
-  const [start, setStart] = useState(true)
+  const { transition } = useContext(RouterPropsContext)
 
   useEffect(() => {
+    const LeftBox = document.getElementById('LeftBox')
     const Img = document.getElementById('Img')
     const Strong = document.getElementById('Strong')
     const StrongStroke = document.getElementById('StrongStroke')
@@ -19,56 +21,9 @@ export const HomePage = () => {
     const CV = document.getElementById('CV')
     const Contact = document.getElementById('Contact')
 
-    if (start) {
-      const finalState = window.innerWidth > 720 ? '11.25ch' : '6.45ch'
-
-      Img.style.opacity = '0.85'
-      animateBorder(Strong, 0, 4, 0, 0, () => {
-        animateWidth(Strong, '3.25ch', () => {
-          animateWidth(Strong, '13.25ch', () => {
-            Strong.style.borderRight = 'none'
-            setStart(false)
-            animateWidth(StrongStroke, finalState, () => {
-              animateWidth(StrongFill01, finalState, () => {
-                animateWidth(StrongFill02, finalState, () => {
-                  StrongStroke.style.opacity = '0'
-                  StrongFill01.style.opacity = '0'
-                  P1.style.borderRight = 'solid 4px'
-                  animateWidth(P1, '19ch', () => {
-                    P1.style.borderRight = 'none'
-                    P2.style.borderRight = 'solid 4px'
-                    animateWidth(P2, '9.5ch', () => {
-                      P2.style.borderRight = 'none'
-                      P3.style.borderRight = 'solid 4px'
-                      animateWidth(P3, '25.5ch', () => {
-                        P3.style.borderRight = 'none'
-                        P4.style.borderRight = 'solid 4px'
-                        animateWidth(P4, '28.5ch', () => {
-                          P4.style.width = '28.5ch'
-                          animateTransform(CV, 'scale(1)', () => {
-                            animateTransform(Contact, 'scale(1)', () => {
-                              animateFilter(Img, 'grayscale(100%) blur(0px)', () => {
-                                Strong.style.textShadow = '0 0 8px rgba(0, 0, 0, 0.75)'
-                                StrongFill02.style.textShadow = '0 0 8px rgba(0, 0, 0, 0.75)'
-                                P1.style.textShadow = '0 0 8px rgba(0, 0, 0, 0.75)'
-                                P2.style.textShadow = '0 0 8px rgba(0, 0, 0, 0.75)'
-                                P3.style.textShadow = '0 0 8px rgba(0, 0, 0, 0.75)'
-                                P4.style.textShadow = '0 0 8px rgba(0, 0, 0, 0.75)'
-                              })
-                            })
-                          })
-                        })
-                      })
-                    })
-                  })
-                })
-              })
-            })
-          })
-        })
-      })
-    }
-  })
+    transition === 'in' && transitionInHome(Img, Strong, StrongStroke, StrongFill01, StrongFill02, P1, P2, P3, P4, CV, Contact)
+    transition === 'out' && transitionOutHome(LeftBox, Img)
+  }, [transition])
 
   return (
     <main id='Page'>
@@ -132,12 +87,8 @@ const LeftBox = styled.div`
   min-height: 100dvh;
   padding-top: 2rem;
   @media (max-width: 720px) {
-    justify-content: center;
-    padding-top: 8rem;
-  }
-  @media (max-width: 420px) {
-    justify-content: center;
-    padding-top: 6rem;
+    justify-content: flex-end;
+    padding-bottom: 7rem;
   }
 `
 const RightBox = styled.div`
@@ -155,7 +106,7 @@ const RightBox = styled.div`
   }
 `
 const Img = styled.img`
-  height: 140%;
+  height: 135%;
   filter: grayscale(100%) blur(400px);
   transition: all 0.75s ease-in-out;
   opacity: 0;
@@ -295,6 +246,6 @@ const Button = styled.button`
     width: 14.5rem;
     color: ${(props) => props.theme.lightColor};
     background-color: ${(props) => props.theme.primaryColor};
-    text-shadow: 0 0 8px #00000085;
+    text-shadow: 0 0 8px #00000060;
   }
 `

@@ -1,35 +1,48 @@
+import { useContext } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { styled } from 'styled-components'
-import { Link } from 'react-router-dom'
 import { SVG_Academic } from './icons/SVG_Academic'
 import { SVG_Contact } from './icons/SVG_Contact'
 import { SVG_Home } from './icons/SVG_Home'
 import { SVG_User } from './icons/SVG_User'
 import { SVG_Projects } from './icons/SVG_Projects'
+import { goTo } from '../Router'
+import { RouterPropsContext } from '../contexts/RouterPropsContext'
 
 export const Footer = () => {
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
+  const { setTransition } = useContext(RouterPropsContext)
+
+  const handleClick = (nextPath) => {
+    setTransition('out')
+    setTimeout(() => {
+      goTo(pathname, nextPath, navigate)
+      setTransition('in')
+    }, 500)
+  }
+
   return (
     <Box_Footer>
-      <BlurBG />
-
-      <Link id='LinkFix' to='/'>
+      <Button onClick={() => handleClick('/')}>
         <SVG_Home />
-      </Link>
+      </Button>
 
-      <Link id='LinkFix' to='/about-me'>
+      <Button onClick={() => handleClick('/about-me')}>
         <SVG_User />
-      </Link>
+      </Button>
 
-      <Link id='LinkFix' to='projects'>
+      <Button onClick={() => handleClick('/projects')}>
         <SVG_Projects />
-      </Link>
+      </Button>
 
-      <Link id='LinkFix' to='academic'>
+      <Button onClick={() => handleClick('/academic')}>
         <SVG_Academic />
-      </Link>
+      </Button>
 
-      <Link id='LinkFix' to='contact'>
+      <Button onClick={() => handleClick('/contact')}>
         <SVG_Contact />
-      </Link>
+      </Button>
     </Box_Footer>
   )
 }
@@ -58,18 +71,11 @@ const Box_Footer = styled.nav`
     border-radius: 0;
   }
 `
-const Img = styled.img`
-  width: fit-content;
-  height: 2rem;
-  @media (max-width: 720px) {
-    height: 2rem;
-  }
-`
-const BlurBG = styled.div`
-  z-index: 1;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: ${(props) => props.theme.bgComponentColor};
-  backdrop-filter: blur(10px);
+const Button = styled.button`
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
 `

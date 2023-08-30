@@ -53,3 +53,43 @@ export function animateFilter(element, finalState, callback) {
     }
   })
 }
+
+export function animateOpacity(element, finalState, callback) {
+  element.style.transition = `opacity 0.75s ease-in-out`
+
+  setTimeout(() => {
+    element.style.opacity = finalState
+
+    element.addEventListener('transitionend', () => {
+      if (callback) {
+        callback()
+      }
+    })
+  }, 250)
+}
+
+export function animateInPage(element, callback) {
+  element.style.transition = `all 0.5s ease-in-out`
+
+  element.style.opacity = '1'
+  element.style.top = '0'
+
+  element.addEventListener('transitionend', () => {
+    if (callback) {
+      callback()
+    }
+  })
+}
+
+export function animateOutPage(element, callback) {
+  element.style.transition = `all 0.5s ease-in-out`
+
+  element.style.opacity = '0'
+  element.style.top = '5rem'
+
+  element.addEventListener('transitionend', () => {
+    if (callback) {
+      callback()
+    }
+  })
+}

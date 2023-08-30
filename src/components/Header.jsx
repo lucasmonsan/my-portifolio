@@ -5,7 +5,7 @@ import linkedin from '../assets/json/linkedin.json'
 import { SVG_Moon } from './icons/SVG_Moon'
 import { SVG_Sun } from './icons/SVG_Sun'
 import { useContext, useEffect } from 'react'
-import { SwitchThemeContext } from '../shared/ThemeContext'
+import { SwitchThemeContext } from '../contexts/ThemeContext'
 
 /******************************/
 
@@ -31,14 +31,7 @@ export const Header = () => {
         </A>
 
         <A target='_blank' href='https://br.linkedin.com/in/lucasmonsan'>
-          <Player
-            src={linkedin}
-            hover={true}
-            loop={true}
-            autoplay={false}
-            speed={1.5}
-            style={{ transform: 'scale(1.75)', paddingTop: '0.25rem' }}
-          />
+          <Player src={linkedin} hover={true} loop={true} autoplay={false} speed={1.5} style={{ transform: 'scale(1.75)', paddingTop: '0.25rem' }} />
         </A>
       </Nav>
     </Box_Header>

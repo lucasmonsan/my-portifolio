@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react'
 import { styled } from 'styled-components'
-import { SwitchThemeContext } from '../../shared/ThemeContext'
+import { SwitchThemeContext } from '../../contexts/ThemeContext'
 import { animateTransform } from '../../js/Animations'
 
 export const SVG_Moon = () => {

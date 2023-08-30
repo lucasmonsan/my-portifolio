@@ -1,13 +1,12 @@
 import { useContext, useEffect } from 'react'
 import { styled } from 'styled-components'
-import { SwitchThemeContext } from '../../shared/ThemeContext'
+import { SwitchThemeContext } from '../../contexts/ThemeContext'
 import { animateTransform } from '../../js/Animations'
 
 export const SVG_Sun = () => {
   const { setCurrentTheme } = useContext(SwitchThemeContext)
 
   const changeTheme = () => {
-    const Sun = document.getElementById('Sun')
     animateTransform(Sun, 'scale(0)')
     setTimeout(() => {
       setCurrentTheme('dark')

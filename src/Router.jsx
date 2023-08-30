@@ -24,3 +24,19 @@ export const Router = () => {
     </BrowserRouter>
   )
 }
+
+export const goTo = (pathname, nextPath, navigate) => {
+  if (pathname === '/') {
+    navigate(nextPath)
+  } else if (pathname === '/about-me') {
+    navigate(nextPath)
+  } else if (pathname === '/projects') {
+    navigate(nextPath)
+  } else if (pathname === '/academic') {
+    navigate(nextPath)
+  } else if (pathname === '/contact') {
+    navigate(nextPath)
+  } else {
+    navigate(nextPath)
+  }
+}
